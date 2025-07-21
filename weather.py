@@ -1,12 +1,23 @@
-print("\n--- Stage 3: Single Set from File ---")
+print("\n--- Stage 4: Multiple Sets from File ---")
 try:
-    with open("input.txt", "r") as file:
-        a = float(file.readline())
-        b = float(file.readline())
-        c = float(file.readline())
-        x = float(file.readline())
+    with open("input_multi.txt", "r") as file:
+        line_number = 1
+        for line in file:
+            parts = line.strip().split()
+            if len(parts) != 4:
+                print(f"Line {line_number} is invalid: {line.strip()}")
+                line_number += 1
+                continue
 
-    T = a * x**2 + b * x + c
-    print(f"Predicted temperature: {T}")
+            a = float(parts[0])
+            b = float(parts[1])
+            c = float(parts[2])
+            x = float(parts[3])
+
+            T = a * x**2 + b * x + c
+            print(f"Line {line_number}: a={a}, b={b}, c={c}, x={x} => Predicted temperature: {T}")
+            line_number += 1
+except FileNotFoundError:
+    print("input_multi.txt not found!")
 except Exception as e:
-    print(f"Error reading file: {e}")
+    print(f"Error: {e}")

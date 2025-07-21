@@ -1,8 +1,12 @@
-print("\n--- Stage 1: Hardcoded values ---")
-a = 1
-b = -2
-c = 1
-x = 3
+print("\n--- Stage 2: Keyboard Input ---")
+try:
+    a = float(input("Enter a: "))
+    b = float(input("Enter b: "))
+    c = float(input("Enter c: "))
+    x = float(input("Enter x (time): "))
 
-T = a * x**2 + b * x + c
-print(f"Predicted temperature: {T}")
+    T = a * x**2 + b * x + c
+    print(f"Predicted temperature: {T}")
+except ValueError:
+    print("Invalid input! Please enter numeric values.")
+

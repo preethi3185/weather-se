@@ -1,12 +1,12 @@
-print("\n--- Stage 2: Keyboard Input ---")
+print("\n--- Stage 3: Single Set from File ---")
 try:
-    a = float(input("Enter a: "))
-    b = float(input("Enter b: "))
-    c = float(input("Enter c: "))
-    x = float(input("Enter x (time): "))
+    with open("input.txt", "r") as file:
+        a = float(file.readline())
+        b = float(file.readline())
+        c = float(file.readline())
+        x = float(file.readline())
 
     T = a * x**2 + b * x + c
     print(f"Predicted temperature: {T}")
-except ValueError:
-    print("Invalid input! Please enter numeric values.")
-
+except Exception as e:
+    print(f"Error reading file: {e}")
